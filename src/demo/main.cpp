@@ -1,13 +1,17 @@
-#include <cmengine/Core.h>
+#include <cmengine/cmengine.h>
 
-#include <iostream>
+struct Player : public Component
+{
+	int dummy;
+};
 
 int main()
 {
-	Core core;
-	core.dummy();
-	
-	std::cout << "Hello world!" << std::endl;
+	std::shared_ptr<Core> core = Core::initialize();
+	std::shared_ptr<Entity> pe = core->addEntity();
+	std::shared_ptr<Player> pc = pe->addComponent<Player>();
+
+	core->Start;
 
 	return 0;
-}
+};

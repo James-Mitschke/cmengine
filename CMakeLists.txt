@@ -5,15 +5,40 @@ include_directories(
   src
 )
 
-add_executable(demo
-  src/demo/main.cpp
+if(MSVC)
+  include_directories(
+	${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86_64/include
+	)
+	link_directories(
+	${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86_64/lib
+  )
+endif()
+
+add_library(rend
+  src/rend/Exception.cpp
+  src/rend/Context.cpp
+  src/rend/Texture.cpp
+  src/rend/RenderTexture.cpp
+  src/rend/Shader.cpp
+  src/rend/Buffer.cpp
+  src/rend/Mesh.cpp
+  src/rend/Util.cpp
 )
 
-target_link_libraries(demo cmengine)
+if(MSVC OR MINGW)
+  target_link_libraries(rend glew32 opengl32)
+else()
+  target_link_libraries(rend GLEW GL)
+endif()
 
-# .h files included to show in Visual Studio
-
-add_library(cmengine SHARED
+add_library(cmengine
   src/cmengine/Core.cpp
   src/cmengine/Core.h
 )
+
+target_link_libraries(cmengine rend)
+
+add_executable(demo
+  src/demo/main.cpp
+)
+target_link_libraries(demo cmengine)
