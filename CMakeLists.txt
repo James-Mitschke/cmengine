@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 project(CMENGINE)
+add_definitions(-DSDL_MAIN_HANDLED)
 
 include_directories(
   src
@@ -16,6 +17,7 @@ endif()
 
 add_library(rend
   src/rend/Exception.cpp
+  src/rend/Exception.h
   src/rend/Context.cpp
   src/rend/Texture.cpp
   src/rend/RenderTexture.cpp
@@ -34,9 +36,12 @@ endif()
 add_library(cmengine
   src/cmengine/Core.cpp
   src/cmengine/Core.h
+  src/cmengine/Entity.cpp
+  src/cmengine/Exception.cpp
+  src/cmengine/Exception.h
 )
 
-target_link_libraries(cmengine rend)
+target_link_libraries(cmengine rend SDL2)
 
 add_executable(demo
   src/demo/main.cpp

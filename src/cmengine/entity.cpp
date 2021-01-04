@@ -1,14 +1,15 @@
 #include "Entity.h"
+#include "Component.h"
 
-using namespace myengine
+namespace cmengine
 {
 
-void Entity::tick()
-{
-	for(size_t ci = 0; ci < components_size(); ci++)
+	void Entity::tick()
 	{
-		//components.at(ci)->tick();
+		for(size_t ci = 0; ci < components.size(); ci++)
+		{
+			//components.at(ci)->tick();
+		}
 	}
-};
 
 }
