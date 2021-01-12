@@ -36,9 +36,18 @@ endif()
 add_library(cmengine
   src/cmengine/Core.cpp
   src/cmengine/Core.h
+
   src/cmengine/Entity.cpp
+  src/cmengine/Entity.h
+
   src/cmengine/Exception.cpp
   src/cmengine/Exception.h
+
+  src/cmengine/Component.cpp
+  src/cmengine/Component.h
+
+  src/cmengine/Renderer.cpp
+  src/cmengine/Renderer.h
 )
 
 target_link_libraries(cmengine rend SDL2)

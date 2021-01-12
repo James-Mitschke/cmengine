@@ -1,3 +1,6 @@
+#ifndef CMENGINE_EXCEPTION_H
+#define CMENGINE_EXCEPTION_H
+
 #include <exception>
 #include <string>
 
@@ -15,3 +18,5 @@ namespace cmengine
 
 	};
 }
+
+#endif

@@ -1,9 +1,5 @@
 #include "Exception.h"
 
-#include <GL/glew.h>
-
-#include <iostream>
-
 namespace cmengine
 {
 
@@ -18,5 +14,4 @@ namespace cmengine
 	{
 		return message.c_str();
 	}
-
 }

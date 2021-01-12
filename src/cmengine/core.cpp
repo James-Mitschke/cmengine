@@ -1,6 +1,7 @@
 #include "Core.h"
 #include "Entity.h"
 #include "Exception.h"
+#include "Renderer.h"
 
 namespace cmengine
 {
@@ -10,7 +11,7 @@ namespace cmengine
 		std::shared_ptr<Core> rtn = std::make_shared<Core>();
 		rtn->self = rtn;
 
-		rtn->window = SDL_CreateWindow("myengine",
+		rtn->window = SDL_CreateWindow("cmengine",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			800, 600,
 			SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
@@ -26,6 +27,28 @@ namespace cmengine
 			{
 				throw Exception("Failed to create OpenGL context");
 			}
+
+		/*	rtn->device = alcOpenDevice(NULL);
+
+			if (!rtn->device)
+			{
+				throw Exception("Failed to open default device!");
+			}
+
+			rtn->context = alcCreateContext(rtn->device, NULL);
+
+			if (!rtn->context)
+			{
+				alcCloseDevice(rtn->device);
+				throw Exception("Failed to create context!");
+			}
+
+			if (!alcMakeContextCurrent(rtn->context))
+			{
+				alcDestroyContext(rtn->context);
+				alcCloseDevice(rtn->device);
+				throw Exception("Failed to make context current!");
+			}*/
 
 			rtn->context = rend::Context::initialize();
 			//rtn->keyboard = std::make_shared<Keyboard>();
@@ -69,11 +92,12 @@ namespace cmengine
 			}
 
 			glClearColor(1, 0, 0, 1);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (size_t ei = 0; ei < entities.size(); ei++)
 			{
-				//entities.at(ei)->display();
+				entities.at(ei)->render();
 			}
 
 			SDL_GL_SwapWindow(window);
