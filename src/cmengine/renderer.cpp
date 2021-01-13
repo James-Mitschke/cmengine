@@ -16,7 +16,7 @@ namespace cmengine
 		"																		"\
 		"void main()															"\
 		"{																		"\
-		"	gl_Position = u_Projection * u_Model * vec4(a_Position, 0, 1);		"\
+		"	gl_Position = vec4(a_Position, 0, 1);		"\
 		"}																		"\
 		"																		"\
 		"\n#endif\n																"\
@@ -24,16 +24,14 @@ namespace cmengine
 		"																		"\
 		"void main()															"\
 		"{																		"\
-		"	gl_FragColor = vec4(1, 0, 0, 1);									"\
+		"	gl_FragColor = vec4(0, 0, 1, 1);									"\
 		"}																		"\
 		"																		"\
 		"\n#endif\n																";
 
 		shader = getCore()->context->createShader();
-		//std::shared_ptr<Shader> shader = context->createShader();
 		shader->parse(src);
 
-		//std::shared_ptr<Buffer> shape = context->createBuffer();
 		shape = getCore()->context->createBuffer();
 		shape->add(rend::vec2(0, 0.5f));
 		shape->add(rend::vec2(-0.5f, -0.5f));
