@@ -1,7 +1,9 @@
 #include "Renderer.h"
 #include "Core.h"
-//#include "Transform.h"
+#include "Transform.h"
 #include "Entity.h"
+
+#include <iostream>
 
 namespace cmengine
 {
@@ -16,7 +18,7 @@ namespace cmengine
 		"																		"\
 		"void main()															"\
 		"{																		"\
-		"	gl_Position = vec4(a_Position, 0, 1);		"\
+		"	gl_Position = u_Projection * u_Model * vec4(a_Position, 0, 1);		"\
 		"}																		"\
 		"																		"\
 		"\n#endif\n																"\
@@ -40,6 +42,8 @@ namespace cmengine
 
 	void Renderer::onRender()
 	{
+		shader->setUniform("u_Projection", glm::perspective(glm::radians(45.0f), 1.0f, 0.01f, 1000.0f));
+		shader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModel());
 		shader->setAttribute("a_Position", shape);
 		shader->render();
 	}

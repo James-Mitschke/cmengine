@@ -6,7 +6,8 @@
 #include "Component.h"
 #include "Renderer.h"
 #include "Exception.h"
-//#include "Transform.h"
+#include "Transform.h"
+#include "Sound.h"
 //#include "Keyboard.h"
 
 using namespace cmengine;

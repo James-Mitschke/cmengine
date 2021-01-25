@@ -25,4 +25,15 @@ namespace cmengine
 		return core.lock();
 	}
 
+	std::shared_ptr<Transform> Entity::getTransform()
+	{
+		return transform.lock();
+	}
+
+	/*
+	std::shared_ptr<Sound> Entity::getSound()
+	{
+		return sound.lock();
+	}
+	*/
 }

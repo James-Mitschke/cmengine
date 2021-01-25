@@ -10,7 +10,7 @@ namespace cmengine
 	struct Component;
 	struct Core;
 	struct Exception;
-	//struct Transform;
+	struct Transform;
 
 	struct Entity
 	{
@@ -35,16 +35,20 @@ namespace cmengine
 			for (size_t i = 0; i < components.size(); i++)
 			{
 				std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(components.at(i));
+				if (!rtn) continue;
+				return rtn;
 			}
-			if (!rtn) continue;
-
-			return rtn;
+			throw Exception("Invalid type!");
 		}
 
 		void tick();
 		void render();
 
 		std::shared_ptr<Core> getCore();
+		std::weak_ptr<Transform> transform;
+
+		std::shared_ptr<Transform> getTransform();
+		//std::shared_ptr<Sound> getSound();
 
 	private:
 

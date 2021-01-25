@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <rend/rend.h>
-//#include <AL/al.h>
-//#include <AL/alc.h>
+#include <AL/al.h>
+#include <AL/alc.h>
 
 #include <memory>
 #include <vector>
@@ -27,11 +27,11 @@ namespace cmengine
 	private:
 		std::vector<std::shared_ptr<Entity>> entities;
 		std::weak_ptr<Core> self;
-		//ALCdevice* device;
 		SDL_Window* window;
 		SDL_GLContext glContext;
+		ALCdevice* ALdevice;
+		ALCcontext* ALcontext;
 		std::shared_ptr<rend::Context> context;
-		//ALCcontext* context;
 		//std::shared_ptr<Keyboard> keyboard; 
 	};
 

@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Exception.h"
 #include "Renderer.h"
+#include "Transform.h"
 
 namespace cmengine
 {
@@ -28,29 +29,30 @@ namespace cmengine
 				throw Exception("Failed to create OpenGL context");
 			}
 
-		/*	rtn->device = alcOpenDevice(NULL);
+			rtn->ALdevice = alcOpenDevice(NULL);
 
-			if (!rtn->device)
+			if (!rtn->ALdevice)
 			{
 				throw Exception("Failed to open default device!");
 			}
 
-			rtn->context = alcCreateContext(rtn->device, NULL);
+			rtn->ALcontext = alcCreateContext(rtn->ALdevice, NULL);
 
-			if (!rtn->context)
+			if (!rtn->ALcontext)
 			{
-				alcCloseDevice(rtn->device);
+				alcCloseDevice(rtn->ALdevice);
 				throw Exception("Failed to create context!");
 			}
 
-			if (!alcMakeContextCurrent(rtn->context))
+			if (!alcMakeContextCurrent(rtn->ALcontext))
 			{
-				alcDestroyContext(rtn->context);
-				alcCloseDevice(rtn->device);
+				alcDestroyContext(rtn->ALcontext);
+				alcCloseDevice(rtn->ALdevice);
 				throw Exception("Failed to make context current!");
-			}*/
+			}
 
-			rtn->context = rend::Context::initialize();
+			glewInit();
+			rtn->context = std::make_shared<rend::Context>();
 			//rtn->keyboard = std::make_shared<Keyboard>();
 
 		return rtn;
@@ -65,7 +67,7 @@ namespace cmengine
 
 		entities.push_back(rtn);
 
-		//rtn->addComponent<Transform>();
+		rtn->transform = rtn->addComponent<Transform>();
 
 		return rtn;
 	}
@@ -99,6 +101,17 @@ namespace cmengine
 			{
 				entities.at(ei)->render();
 			}
+
+			/*
+			* 
+			* glClear(GL_DEPTH_BUFFER_BIT);
+			* glDisable(GL_DEPTH_TEST);
+			for (size_t ei = 0; ei < entities.size(); ei++)
+			{
+				entities.at(ei)->gui();
+			}
+			* glEnable(GL_DEPTH_TEST);
+			*/
 
 			SDL_GL_SwapWindow(window);
 		}

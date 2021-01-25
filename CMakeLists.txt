@@ -28,7 +28,7 @@ add_library(rend
 )
 
 if(MSVC OR MINGW)
-  target_link_libraries(rend glew32 opengl32)
+  target_link_libraries(rend glew32 opengl32 SDL2 openal32)
 else()
   target_link_libraries(rend GLEW GL)
 endif()
@@ -48,6 +48,14 @@ add_library(cmengine
 
   src/cmengine/Renderer.cpp
   src/cmengine/Renderer.h
+
+  src/cmengine/Sound.cpp
+  src/cmengine/Sound.h
+
+  src/cmengine/Transform.cpp
+  src/cmengine/Transform.h
+
+  src/cmengine/cmengine.h
 )
 
 target_link_libraries(cmengine rend SDL2)

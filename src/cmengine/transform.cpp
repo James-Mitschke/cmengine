@@ -7,7 +7,7 @@ namespace cmengine
 	{
 		scale = rend::vec3(1, 1, 1);
 	}
-	
+
 	rend::mat4 Transform::getModel()
 	{
 		rend::mat4 rtn(1.0f);
@@ -21,7 +21,18 @@ namespace cmengine
 		return rtn;
 	}
 
-	void Transform()
+	void Transform::setPosition(rend::vec3 position)
 	{
-
+		this->position = position;
 	}
+
+	void Transform::setRotation(rend::vec3 rotation)
+	{
+		this->rotation = rotation;
+	}
+
+	void Transform::setScale(rend::vec3 scale)
+	{
+		this->scale = scale;
+	}
+}
