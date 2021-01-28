@@ -7,7 +7,10 @@
 
 namespace cmengine
 {
-
+	/// <summary>
+	/// Initializes the foundation of the engine, such as render window and contexts
+	/// </summary>
+	/// <returns>Multiple references for the rest of the engine</returns>
 	std::shared_ptr<Core> Core::initialize()
 	{
 		std::shared_ptr<Core> rtn = std::make_shared<Core>();
@@ -61,7 +64,10 @@ namespace cmengine
 		return rtn;
 	}
 
-
+	/// <summary>
+	/// Adds an entity system onto core, multiple of these can be made
+	/// </summary>
+	/// <returns>A reference to the new entity</returns>
 	std::shared_ptr<Entity> Core::addEntity()
 	{
 		std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
@@ -75,11 +81,18 @@ namespace cmengine
 		return rtn;
 	}
 
+	/// <summary>
+	/// Adds a resources system onto core, multiple of these can be made
+	/// </summary>
+	/// <returns>A reference to the new resources system</returns>
 	std::shared_ptr<Resources> Core::getResources()
 	{
 		return resources;
 	}
 
+	/// <summary>
+	/// A function used to update the game engine window, has some unimplemented GUI code
+	/// </summary>
 	void Core::start()
 	{
 		bool running = true;

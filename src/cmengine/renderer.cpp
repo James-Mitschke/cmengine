@@ -7,7 +7,9 @@
 
 namespace cmengine
 {
-
+	/// <summary>
+	/// Initializes the renderer with the vertex and fragment shaders, and then defines a basic object for use in testing
+	/// </summary>
 	void Renderer::onInitialize()
 	{
 		const char* src =
@@ -40,6 +42,9 @@ namespace cmengine
 		shape->add(rend::vec2(0.5f, -0.5f));
 	}
 
+	/// <summary>
+	/// Tells the engine what it needs to render and how, such as setting the projection and model matrices as well as the shape's position defined in onInitialize 
+	/// </summary>
 	void Renderer::onRender()
 	{
 		shader->setUniform("u_Projection", glm::perspective(glm::radians(45.0f), 1.0f, 0.01f, 1000.0f));

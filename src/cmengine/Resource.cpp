@@ -2,6 +2,9 @@
 
 namespace cmengine
 {
+	/// <summary>
+	/// This class is a basic resource loading system that gets a reference to core, and also returns file paths
+	/// </summary>
 
 	Resource::~Resource() { }
 	void Resource::onLoad() { }

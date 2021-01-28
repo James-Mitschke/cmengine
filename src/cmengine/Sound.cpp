@@ -5,6 +5,9 @@
 
 namespace cmengine
 {
+	/// <summary>
+	/// Provides functionality for the user to load custom vorbis encoded .ogg files for usage from the game engine
+	/// </summary>
 	void Sound::onLoad()
 	{
 		alGenBuffers(1, &id);
@@ -17,6 +20,9 @@ namespace cmengine
 		alBufferData(id, format, &bufferData.at(0), static_cast<ALsizei>(bufferData.size()), freq);
 	}
 
+	/// <summary>
+	/// Takes in parameters defined in onLoad to seperate the sound file into a readable format for the game engine so that it's ready to output when called by a soundsource
+	/// </summary>
 	void Sound::loadOgg(const std::string& fileName, std::vector<char> &buffer, ALenum &format, ALsizei &freq)
 	{
 		int channels = 0;
