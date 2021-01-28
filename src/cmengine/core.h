@@ -11,6 +11,7 @@ namespace cmengine
 
 	struct Renderer;
 	struct Entity;
+	struct Resources;
 	//struct Keyboard;
 
 	struct Core
@@ -21,6 +22,7 @@ namespace cmengine
 
 		std::shared_ptr<Entity> addEntity();
 		//std::shared_ptr<Keyboard> addKeyboard();
+		std::shared_ptr<Resources> getResources();
 
 		void start();
 
@@ -33,6 +35,7 @@ namespace cmengine
 		ALCcontext* ALcontext;
 		std::shared_ptr<rend::Context> context;
 		//std::shared_ptr<Keyboard> keyboard; 
+		std::shared_ptr<Resources> resources;
 	};
 
 }

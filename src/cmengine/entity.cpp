@@ -30,10 +30,8 @@ namespace cmengine
 		return transform.lock();
 	}
 
-	/*
-	std::shared_ptr<Sound> Entity::getSound()
+	std::shared_ptr<Soundsource> Entity::getSoundsource()
 	{
-		return sound.lock();
+		return soundsource.lock();
 	}
-	*/
 }

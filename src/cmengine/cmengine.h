@@ -8,6 +8,9 @@
 #include "Exception.h"
 #include "Transform.h"
 #include "Sound.h"
+#include "Soundsource.h"
+#include "Resource.h"
+#include "Resources.h"
 //#include "Keyboard.h"
 
 using namespace cmengine;

@@ -3,6 +3,7 @@
 #include "Exception.h"
 #include "Renderer.h"
 #include "Transform.h"
+#include "Resources.h"
 
 namespace cmengine
 {
@@ -54,6 +55,8 @@ namespace cmengine
 			glewInit();
 			rtn->context = std::make_shared<rend::Context>();
 			//rtn->keyboard = std::make_shared<Keyboard>();
+			rtn->resources = std::make_shared<Resources>();
+			rtn->resources->core = rtn;
 
 		return rtn;
 	}
@@ -70,6 +73,11 @@ namespace cmengine
 		rtn->transform = rtn->addComponent<Transform>();
 
 		return rtn;
+	}
+
+	std::shared_ptr<Resources> Core::getResources()
+	{
+		return resources;
 	}
 
 	void Core::start()

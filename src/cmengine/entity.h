@@ -11,6 +11,7 @@ namespace cmengine
 	struct Core;
 	struct Exception;
 	struct Transform;
+	struct Soundsource;
 
 	struct Entity
 	{
@@ -46,9 +47,10 @@ namespace cmengine
 
 		std::shared_ptr<Core> getCore();
 		std::weak_ptr<Transform> transform;
+		std::weak_ptr<Soundsource> soundsource;
 
 		std::shared_ptr<Transform> getTransform();
-		//std::shared_ptr<Sound> getSound();
+		std::shared_ptr<Soundsource> getSoundsource();
 
 	private:
 

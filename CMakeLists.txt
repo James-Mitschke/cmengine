@@ -55,6 +55,13 @@ add_library(cmengine
   src/cmengine/Transform.cpp
   src/cmengine/Transform.h
 
+  src/cmengine/Soundsource.cpp
+  src/cmengine/Soundsource.h
+
+  src/cmengine/Resource.cpp
+  src/cmengine/Resource.h
+  src/cmengine/Resources.h
+
   src/cmengine/cmengine.h
 )
 
